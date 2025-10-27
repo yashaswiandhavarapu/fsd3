@@ -1,0 +1,19 @@
+import React from "react";
+
+function App(){
+// Generic variable
+let box: Array<number> = [1, 2, 3];
+// Generic function
+function identity<T>(value: T): T {
+ return value;
+}
+console.log(identity<string>("Hello"));
+console.log(identity<number>(123));
+// Generic with constraint
+function getLength<T extends { length: number }>(item: T): number {
+ return item.length;
+}
+console.log(getLength("Purushottam"));
+console.log(getLength([1, 2, 3, 4]));}
+
+export default App;

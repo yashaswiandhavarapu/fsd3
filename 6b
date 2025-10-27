@@ -1,0 +1,59 @@
+const express = require('express');
+const app = express();
+const port = 3000;
+// Middleware to parse form data
+app.use(express.urlencoded({ extended: true
+}));
+// Set EJS as templating engine
+app.set('view engine', 'ejs');
+// GET route - render form
+app.get('/', (req, res) => {
+res.render('index');
+});
+// POST route - handle form submission
+app.post('/submit', (req, res) => {
+const { name, email, age } = req.body;
+res.render('result', { name, email, age });
+});
+app.listen(port, () => {
+console.log(`Serverrunningat
+http://localhost:${port}`);
+});
+INDEX.EJS
+!DOCTYPE html>
+<html>
+<head>
+<title>Submit Your Info</title>
+</head>
+<body>
+<h1>Enter Your Details</h1>
+<form action="/submit" method="POST">
+<label>Name:</label><br>
+<input type="text" name="name"
+required><br><br>
+<label>Email:</label><br>
+<input type="email" name="email"
+required><br><br>
+<label>Age:</label><br>
+<input type="number" name="age" min="1"
+required><br><br>
+<button type="submit">Submit</button>
+</form>
+</body>
+</html>
+RESULT.EJS
+<!DOCTYPE html>
+<html>
+<head>
+<title>Submission Result</title>
+</head>
+<body>
+<h1>Thank You!</h1>
+<p><strong>Name:</strong> <%= name
+%></p>
+<p><strong>Email:</strong> <%= email
+%></p>
+<p><strong>Age:</strong> <%= age %></p>
+<a href="/">Go Back</a>
+</body>
+</html>

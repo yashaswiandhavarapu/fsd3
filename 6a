@@ -1,0 +1,14 @@
+const express = require('express'); const app =
+express();
+const port = 3000;
+// Simple middleware//
+app.use((req, res, next) => { console.log('Middleware
+called'); next();
+});
+// Route//
+app.get('/', (req, res) => { res.send('Hello everyone!');
+});
+// Start server app.listen(port, () =>
+{console.log(`Server running at
+http://localhost:${port}`);
+});

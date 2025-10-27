@@ -1,0 +1,39 @@
+const express = require('express');
+const mongoose = require('mongoose');
+const app = express();
+
+// Connect to MongoDB
+mongoose.connect('mongodb://127.0.0.1:27017/aaa')
+.then(() => console.log("✅ Connected to MongoDB"))
+.catch(err => console.error(err));
+
+// Model
+const User = mongoose.model('User', {
+    name: String,
+    age: Number,
+    email: String
+});
+
+app.get('/',(req, res) => {
+    res.send("Home Page");
+    });
+// Route to add hardcoded user
+app.get('/add', async (req, res) => {
+    const user = new User({
+        name: "shek",   // Change here
+        age: 28,            // Change here
+        email: "shek.d@gmail.com" // Change here
+    });
+
+    await user.save();
+    res.send("✅ User saved to database");
+});
+
+// Route to see all users
+app.get('/users', async (req, res) => {
+    const users = await User.find();
+    res.json(users);
+});
+
+// Start server
+app.listen(3000, () => console.log("Server running on http://localhost:3000"));

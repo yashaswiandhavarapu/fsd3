@@ -1,0 +1,32 @@
+App.jsx
+
+import React, { useState } from "react";
+
+export default function App() {
+  // state to store background color
+  const [isBlack, setIsBlack] = useState(true);
+
+  // function to toggle background color
+  const toggleColor = () => {
+    setIsBlack(!isBlack);
+  };
+
+  return (
+    <div
+      style={{
+        backgroundColor: isBlack ? "black" : "white",
+        color: isBlack ? "white" : "black",
+        height: "100vh", // full screen height
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
+        justifyContent: "center"
+      }}
+    >
+      <h1>Background is {isBlack ? "Black" : "White"}</h1>
+      <button onClick={toggleColor}>
+        Change to {isBlack ? "White" : "Black"}
+      </button>
+    </div>
+  );
+}

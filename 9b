@@ -1,0 +1,30 @@
+list.jsx
+import React from "react";
+
+export default function RenderingLists() {
+  const fruits = ["Apple", "Banana", "Cherry", "Mango","jack fruit"];
+
+  return (
+    <div className="p-4">
+      <h2 className="text-xl font-bold mb-3">Rendering Lists Example</h2>
+      <ul className="list-disc pl-5">
+        {fruits.map((fruit, index) => (
+          <li key={index} className="mb-1">
+            {fruit}
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
+}
+
+App.jsx
+import RenderingLists from "./list";
+function App(){
+
+return(
+  <RenderingLists></RenderingLists>
+);
+
+}
+export default App;

@@ -1,0 +1,18 @@
+import React, { useState } from "react";
+
+export default function App() {
+  // state variable
+  const [message, setMessage] = useState("Hello 👋");
+
+  // function to update the message
+  const updateMessage = () => {
+    setMessage("Hi, the screen is updated ✅");
+  };
+
+  return (
+    <div style={{ textAlign: "center", marginTop: "50px" }}>
+      <h2>{message}</h2>
+      <button onClick={updateMessage}>Update Screen</button>
+    </div>
+  );
+}
